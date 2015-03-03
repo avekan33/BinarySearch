@@ -1,4 +1,5 @@
 
+
 private Item[] store = {new Item(184,14),
         new Item(196,60),
         new Item(206,31),
@@ -20,19 +21,39 @@ private Item[] store = {new Item(184,14),
         new Item(18871,69),
         new Item(19967,45)
 };                             
-public int linearSearch(int catNumToFind)
-{
-    //complete this method
-    return -1;
-}
 public int binarySearch(int catNumToFind)
 {
-    //complete this method    
+    //complete this method
+    int low = 0;
+    int high = store.length-1;
+    while (low<=high) {
+    	int guess = (high+low)/2;
+    	if(store[guess].getCatNum() == catNumToFind){return store[guess].getInventory();}
+    	else if(store[guess].getCatNum()<catNumToFind){low = guess+1;}
+    	else{high = guess-1;}
+    	
+    	
+    }
+    return -1;
+}
+public int linearSearch(int catNumToFind)
+{
+    //complete this method 
+    for(int i =0;i<store.length;i++)
+    {
+    	if(store[i].getCatNum()==catNumToFind){return store[i].getInventory();}
+    }   
     return -1;    
 }
 public int binarySearch(int catNumToFind,int nLow, int nHigh)
 {
     //complete this method    
+    int low = nLow;
+    int high = nHigh;
+    int guess = (low+high)/2;
+    if(store[guess].getCatNum() == catNumToFind){return store[guess].getInventory();}
+    else if(store[guess].getCatNum() < catNumToFind){return binarySearch(catNumToFind,guess+1,high);}
+    else if(store[guess].getCatNum() > catNumToFind){return binarySearch(catNumToFind,low,guess-1);}
     return -1;           
 }
 public void setup()
@@ -78,6 +99,12 @@ public void draw()
 {
     //empty!
 }
+
+
+
+
+
+
 
 
 
